@@ -1,10 +1,10 @@
 const vocabularyVideoBase = document.currentScript.src;
 
 window.foodSignsVocabulary = [
-    { word: "Frijol", video: "" },
-    { word: "Frio", video: "" },
-    { word: "Galleta", video: "" },
-    { word: "Gaseosa", video: "" },
+    { word: "Frijol", video: "../videos/frijol.mp4" },
+    { word: "Frio", video: "../videos/frio.mp4" },
+    { word: "Galleta", video: "../videos/galleta.mp4" },
+    { word: "Gaseosa", video: "../videos/gaseosa.mp4" },
     { word: "Gelatina", video: "" },
     { word: "Hambre", video: "" },
     { word: "Hamburguesa", video: "" },
