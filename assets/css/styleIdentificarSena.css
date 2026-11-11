@@ -1,0 +1,267 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    background: #f5f8f6;
+    color: #17352b;
+    font-family: Arial, sans-serif;
+}
+
+button,
+a {
+    font: inherit;
+}
+
+.game {
+    width: min(100% - 40px, 1080px);
+    margin: 0 auto;
+    padding: 36px 0 48px;
+}
+
+.game__header {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.game__back {
+    display: block;
+    width: fit-content;
+    margin-bottom: 26px;
+    color: #267653;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.game__back:hover,
+.game__back:focus-visible {
+    text-decoration: underline;
+}
+
+.game__eyebrow {
+    margin: 0 0 10px;
+    color: #358267;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.game__header h1 {
+    margin: 0;
+    font-size: clamp(1.8rem, 4vw, 2.7rem);
+}
+
+.game__header > p:last-child {
+    margin: 12px 0 0;
+    color: #5d7169;
+}
+
+.difficulty {
+    margin-bottom: 22px;
+}
+
+.difficulty h2 {
+    margin: 0 0 12px;
+    font-size: 1.15rem;
+}
+
+.difficulty__options {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.difficulty__option {
+    display: grid;
+    gap: 5px;
+    padding: 14px;
+    border: 1px solid #dce8e1;
+    border-radius: 12px;
+    background: #fff;
+    color: #17352b;
+    cursor: pointer;
+    text-align: left;
+}
+
+.difficulty__option span {
+    color: #5d7169;
+    font-size: 0.9rem;
+}
+
+.difficulty__option:hover,
+.difficulty__option:focus-visible,
+.difficulty__option.is-selected {
+    border-color: #358267;
+    outline: none;
+}
+
+.difficulty__option.is-selected {
+    background: #e7f4ed;
+}
+
+.round {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+    gap: 24px;
+    align-items: start;
+}
+
+.round__video-panel {
+    position: relative;
+    overflow: hidden;
+    min-height: 320px;
+    border: 1px solid #dce8e1;
+    border-radius: 16px;
+    background: #e7f4ed;
+}
+
+.round__video-panel video {
+    display: block;
+    width: 100%;
+    min-height: 320px;
+    max-height: 560px;
+    object-fit: contain;
+}
+
+.round__placeholder {
+    position: absolute;
+    inset: 50% 20px auto;
+    margin: 0;
+    color: #5d7169;
+    text-align: center;
+    transform: translateY(-50%);
+}
+
+.round__answers {
+    padding: 22px;
+    border: 1px solid #dce8e1;
+    border-radius: 16px;
+    background: #fff;
+}
+
+.round__stats {
+    display: flex;
+    justify-content: space-between;
+    color: #5d7169;
+    font-size: 0.95rem;
+}
+
+.round__stats strong {
+    color: #17352b;
+}
+
+.round__answers h2 {
+    margin: 24px 0 14px;
+    font-size: 1.25rem;
+}
+
+.answer-options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.answer-option {
+    min-height: 46px;
+    padding: 10px;
+    border: 1px solid #dce8e1;
+    border-radius: 10px;
+    background: #fff;
+    color: #17352b;
+    cursor: pointer;
+    text-align: left;
+}
+
+.answer-option:hover:not(:disabled),
+.answer-option:focus-visible {
+    border-color: #358267;
+    outline: none;
+}
+
+.answer-option:disabled {
+    cursor: default;
+}
+
+.answer-option.is-correct {
+    border-color: #358267;
+    background: #e7f4ed;
+}
+
+.answer-option.is-incorrect {
+    border-color: #c65a5a;
+    background: #fff0f0;
+}
+
+.game__message {
+    min-height: 44px;
+    margin: 16px 0 0;
+    color: #5d7169;
+    line-height: 1.45;
+}
+
+.game__message.is-error {
+    color: #9c3434;
+}
+
+.game__message.is-success {
+    color: #267653;
+}
+
+.game__start,
+.game__next {
+    width: 100%;
+    min-height: 46px;
+    border: 0;
+    border-radius: 10px;
+    background: #267653;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.game__start:hover,
+.game__next:hover {
+    background: #1d6042;
+}
+
+.game__start:disabled,
+.game__next:disabled {
+    background: #81978c;
+    cursor: not-allowed;
+}
+
+.game__next[hidden] {
+    display: none;
+}
+
+@media (max-width: 700px) {
+    .game {
+        width: min(100% - 32px, 520px);
+        padding-top: 24px;
+    }
+
+    .round {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .round__video-panel,
+    .round__video-panel video {
+        min-height: 240px;
+    }
+}
+
+@media (max-width: 420px) {
+    .difficulty__options {
+        grid-template-columns: 1fr;
+    }
+
+    .difficulty__option {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
