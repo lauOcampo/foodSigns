@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordena la palabra | foodSigns</title>
+    <link rel="stylesheet" href="../../assets/css/styleOrdenarPalabra.css">
+    <script src="../../assets/js/vocabularyData.js" defer></script>
+    <script src="../../assets/js/ordenarPalabra.js" defer></script>
+</head>
+<body>
+    <main class="game">
+        <header class="game__header">
+            <a class="game__back" href="../menu.html">← Volver al menú</a>
+            <p class="game__eyebrow">foodSigns · Juego de vocabulario</p>
+            <h1>Ordena la palabra</h1>
+            <p>Mira el video de la seña y organiza sus letras para descubrir la palabra.</p>
+        </header>
+
+        <section class="round" aria-label="Ronda actual">
+            <div class="round__video-panel">
+                <video id="sign-video" controls preload="metadata" playsinline aria-label="Video de la seña" hidden></video>
+                <p id="video-placeholder" class="round__placeholder">Inicia una partida para ver el video de la seña.</p>
+            </div>
+            <div class="round__game-panel">
+                <div class="round__stats">
+                    <span>Ronda <strong id="round-number">0</strong></span>
+                    <span>Aciertos <strong id="score">0</strong></span>
+                </div>
+                <h2>¿Qué palabra muestra la seña?</h2>
+                <p class="round__instruction">Pulsa las letras en el orden correcto. Si te equivocas, pulsa una letra colocada para quitarla.</p>
+                <div id="answer-slots" class="answer-slots" role="group" aria-label="Espacios para ordenar la palabra"></div>
+                <div id="letter-bank" class="letter-bank" aria-label="Letras disponibles"></div>
+                <div class="round__actions">
+                    <button id="check-answer" class="game__check" type="button" disabled>Comprobar palabra</button>
+                    <button id="clear-answer" class="game__clear" type="button" disabled>Borrar letras</button>
+                </div>
+                <p id="game-message" class="game__message" role="status" aria-live="polite">
+                    Inicia una partida para comenzar.
+                </p>
+                <button id="new-game" class="game__start" type="button">Iniciar partida</button>
+                <button id="next-round" class="game__next" type="button" hidden>Siguiente seña</button>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
