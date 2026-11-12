@@ -1,3 +1,14 @@
+:root {
+    --color-background: #F3F6FA;
+    --color-card: #FFFFFF;
+    --color-primary: #24476B;
+    --color-secondary: #3478B9;
+    --color-accent: #E56B66;
+    --color-soft: #DCE5EF;
+    --color-text: #34445A;
+    --color-muted: #64758A;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -5,8 +16,8 @@
 body {
     min-height: 100vh;
     margin: 0;
-    background: #f5f8f6;
-    color: #17352b;
+    background: var(--color-background);
+    color: var(--color-text);
     font-family: Arial, sans-serif;
 }
 
@@ -23,7 +34,7 @@ body {
 
 .vocabulary__eyebrow {
     margin: 0 0 10px;
-    color: #358267;
+    color: var(--color-secondary);
     font-size: 0.85rem;
     font-weight: 700;
     letter-spacing: 0.12em;
@@ -37,7 +48,7 @@ body {
 
 .vocabulary__header > p:last-child {
     margin: 12px 0 0;
-    color: #5d7169;
+    color: var(--color-muted);
 }
 
 .word-grid {
@@ -48,9 +59,9 @@ body {
 
 .word-card {
     overflow: hidden;
-    border: 1px solid #dce8e1;
+    border: 1px solid var(--color-soft);
     border-radius: 16px;
-    background: #fff;
+    background: var(--color-card);
     text-align: center;
 }
 
@@ -59,7 +70,7 @@ body {
     display: grid;
     width: 100%;
     aspect-ratio: 16 / 10;
-    background: #e7f4ed;
+    background: var(--color-soft);
     place-items: center;
 }
 
@@ -75,7 +86,7 @@ body {
     grid-area: 1 / 1;
     margin: 0;
     padding: 12px;
-    color: #5d7169;
+    color: var(--color-muted);
     text-align: center;
 }
 
@@ -95,7 +106,7 @@ body {
 
 .vocabulary__footer a {
     padding: 8px 0;
-    color: #267653;
+    color: var(--color-secondary);
     font-weight: 700;
 }
 

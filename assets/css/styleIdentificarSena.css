@@ -1,3 +1,14 @@
+:root {
+    --color-background: #F3F6FA;
+    --color-card: #FFFFFF;
+    --color-primary: #24476B;
+    --color-secondary: #3478B9;
+    --color-accent: #E56B66;
+    --color-soft: #DCE5EF;
+    --color-text: #34445A;
+    --color-muted: #64758A;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -5,8 +16,8 @@
 body {
     min-height: 100vh;
     margin: 0;
-    background: #f5f8f6;
-    color: #17352b;
+    background: var(--color-background);
+    color: var(--color-text);
     font-family: Arial, sans-serif;
 }
 
@@ -30,7 +41,7 @@ a {
     display: block;
     width: fit-content;
     margin-bottom: 26px;
-    color: #267653;
+    color: var(--color-secondary);
     font-weight: 700;
     text-decoration: none;
 }
@@ -42,7 +53,7 @@ a {
 
 .game__eyebrow {
     margin: 0 0 10px;
-    color: #358267;
+    color: var(--color-secondary);
     font-size: 0.85rem;
     font-weight: 700;
     letter-spacing: 0.12em;
@@ -56,7 +67,7 @@ a {
 
 .game__header > p:last-child {
     margin: 12px 0 0;
-    color: #5d7169;
+    color: var(--color-muted);
 }
 
 .difficulty {
@@ -78,28 +89,28 @@ a {
     display: grid;
     gap: 5px;
     padding: 14px;
-    border: 1px solid #dce8e1;
+    border: 1px solid var(--color-soft);
     border-radius: 12px;
-    background: #fff;
-    color: #17352b;
+    background: var(--color-card);
+    color: var(--color-text);
     cursor: pointer;
     text-align: left;
 }
 
 .difficulty__option span {
-    color: #5d7169;
+    color: var(--color-muted);
     font-size: 0.9rem;
 }
 
 .difficulty__option:hover,
 .difficulty__option:focus-visible,
 .difficulty__option.is-selected {
-    border-color: #358267;
+    border-color: var(--color-secondary);
     outline: none;
 }
 
 .difficulty__option.is-selected {
-    background: #e7f4ed;
+    background: var(--color-soft);
 }
 
 .round {
@@ -113,9 +124,9 @@ a {
     position: relative;
     overflow: hidden;
     min-height: 320px;
-    border: 1px solid #dce8e1;
+    border: 1px solid var(--color-soft);
     border-radius: 16px;
-    background: #e7f4ed;
+    background: var(--color-soft);
 }
 
 .round__video-panel video {
@@ -130,27 +141,27 @@ a {
     position: absolute;
     inset: 50% 20px auto;
     margin: 0;
-    color: #5d7169;
+    color: var(--color-muted);
     text-align: center;
     transform: translateY(-50%);
 }
 
 .round__answers {
     padding: 22px;
-    border: 1px solid #dce8e1;
+    border: 1px solid var(--color-soft);
     border-radius: 16px;
-    background: #fff;
+    background: var(--color-card);
 }
 
 .round__stats {
     display: flex;
     justify-content: space-between;
-    color: #5d7169;
+    color: var(--color-muted);
     font-size: 0.95rem;
 }
 
 .round__stats strong {
-    color: #17352b;
+    color: var(--color-primary);
 }
 
 .round__answers h2 {
@@ -167,17 +178,17 @@ a {
 .answer-option {
     min-height: 46px;
     padding: 10px;
-    border: 1px solid #dce8e1;
+    border: 1px solid var(--color-soft);
     border-radius: 10px;
-    background: #fff;
-    color: #17352b;
+    background: var(--color-card);
+    color: var(--color-text);
     cursor: pointer;
     text-align: left;
 }
 
 .answer-option:hover:not(:disabled),
 .answer-option:focus-visible {
-    border-color: #358267;
+    border-color: var(--color-secondary);
     outline: none;
 }
 
@@ -186,28 +197,28 @@ a {
 }
 
 .answer-option.is-correct {
-    border-color: #358267;
-    background: #e7f4ed;
+    border-color: var(--color-secondary);
+    background: var(--color-soft);
 }
 
 .answer-option.is-incorrect {
-    border-color: #c65a5a;
-    background: #fff0f0;
+    border-color: var(--color-accent);
+    background: var(--color-card);
 }
 
 .game__message {
     min-height: 44px;
     margin: 16px 0 0;
-    color: #5d7169;
+    color: var(--color-muted);
     line-height: 1.45;
 }
 
 .game__message.is-error {
-    color: #9c3434;
+    color: var(--color-accent);
 }
 
 .game__message.is-success {
-    color: #267653;
+    color: var(--color-secondary);
 }
 
 .game__start,
@@ -216,20 +227,20 @@ a {
     min-height: 46px;
     border: 0;
     border-radius: 10px;
-    background: #267653;
-    color: #fff;
+    background: var(--color-primary);
+    color: var(--color-card);
     cursor: pointer;
     font-weight: 700;
 }
 
 .game__start:hover,
 .game__next:hover {
-    background: #1d6042;
+    background: var(--color-secondary);
 }
 
 .game__start:disabled,
 .game__next:disabled {
-    background: #81978c;
+    background: var(--color-muted);
     cursor: not-allowed;
 }
 

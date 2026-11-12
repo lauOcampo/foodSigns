@@ -1,3 +1,14 @@
+:root {
+    --color-background: #F3F6FA;
+    --color-card: #FFFFFF;
+    --color-primary: #24476B;
+    --color-secondary: #3478B9;
+    --color-accent: #E56B66;
+    --color-soft: #DCE5EF;
+    --color-text: #34445A;
+    --color-muted: #64758A;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -5,8 +16,8 @@
 body {
     min-height: 100vh;
     margin: 0;
-    background: #f5f8f6;
-    color: #17352b;
+    background: var(--color-background);
+    color: var(--color-text);
     font-family: Arial, sans-serif;
 }
 
@@ -30,7 +41,7 @@ a {
     display: block;
     width: fit-content;
     margin-bottom: 26px;
-    color: #267653;
+    color: var(--color-secondary);
     font-weight: 700;
     text-decoration: none;
 }
@@ -42,7 +53,7 @@ a {
 
 .game__eyebrow {
     margin: 0 0 10px;
-    color: #358267;
+    color: var(--color-secondary);
     font-size: 0.85rem;
     font-weight: 700;
     letter-spacing: 0.12em;
@@ -56,7 +67,7 @@ a {
 
 .game__header > p:last-child {
     margin: 12px 0 0;
-    color: #5d7169;
+    color: var(--color-muted);
 }
 
 .round {
@@ -70,9 +81,9 @@ a {
     position: relative;
     overflow: hidden;
     min-height: 320px;
-    border: 1px solid #dce8e1;
+    border: 1px solid var(--color-soft);
     border-radius: 16px;
-    background: #e7f4ed;
+    background: var(--color-soft);
 }
 
 .round__video-panel video {
@@ -91,27 +102,27 @@ a {
     position: absolute;
     inset: 50% 20px auto;
     margin: 0;
-    color: #5d7169;
+    color: var(--color-muted);
     text-align: center;
     transform: translateY(-50%);
 }
 
 .round__game-panel {
     padding: 22px;
-    border: 1px solid #dce8e1;
+    border: 1px solid var(--color-soft);
     border-radius: 16px;
-    background: #fff;
+    background: var(--color-card);
 }
 
 .round__stats {
     display: flex;
     justify-content: space-between;
-    color: #5d7169;
+    color: var(--color-muted);
     font-size: 0.95rem;
 }
 
 .round__stats strong {
-    color: #17352b;
+    color: var(--color-primary);
 }
 
 .round__game-panel h2 {
@@ -121,7 +132,7 @@ a {
 
 .round__instruction {
     margin: 0 0 18px;
-    color: #5d7169;
+    color: var(--color-muted);
     font-size: 0.95rem;
     line-height: 1.45;
 }
@@ -139,12 +150,12 @@ a {
 
 .answer-slots {
     margin-bottom: 14px;
-    background: #f5f8f6;
+    background: var(--color-background);
 }
 
 .letter-bank {
     min-height: 66px;
-    border: 1px dashed #b9cec2;
+    border: 1px dashed var(--color-secondary);
 }
 
 .letter-slot,
@@ -154,17 +165,17 @@ a {
     min-width: 0;
     height: 46px;
     place-items: center;
-    border: 1px solid #dce8e1;
+    border: 1px solid var(--color-soft);
     border-radius: 9px;
-    background: #fff;
-    color: #17352b;
+    background: var(--color-card);
+    color: var(--color-text);
     font-size: 1.1rem;
     font-weight: 700;
 }
 
 .letter-slot {
     border-style: dashed;
-    color: #81978c;
+    color: var(--color-muted);
 }
 
 .letter-slot.is-filled {
@@ -172,15 +183,15 @@ a {
 }
 
 .letter-slot.is-correct {
-    border-color: #358267;
-    background: #e7f4ed;
-    color: #17352b;
+    border-color: var(--color-secondary);
+    background: var(--color-soft);
+    color: var(--color-primary);
 }
 
 .letter-slot.is-incorrect {
-    border-color: #c65a5a;
-    background: #fff0f0;
-    color: #17352b;
+    border-color: var(--color-accent);
+    background: var(--color-card);
+    color: var(--color-accent);
 }
 
 .letter-tile {
@@ -191,7 +202,7 @@ a {
 .letter-slot.is-filled:hover,
 .letter-slot:focus-visible,
 .letter-tile:focus-visible {
-    border-color: #358267;
+    border-color: var(--color-secondary);
     outline: none;
 }
 
@@ -222,21 +233,21 @@ a {
 }
 
 .game__check {
-    background: #267653;
-    color: #fff;
+    background: var(--color-primary);
+    color: var(--color-card);
 }
 
 .game__clear {
-    background: #e7f4ed;
-    color: #267653;
+    background: var(--color-soft);
+    color: var(--color-primary);
 }
 
 .game__check:hover:not(:disabled) {
-    background: #1d6042;
+    background: var(--color-secondary);
 }
 
 .game__clear:hover:not(:disabled) {
-    background: #d7ecdf;
+    background: var(--color-background);
 }
 
 .game__check:disabled,
@@ -248,16 +259,16 @@ a {
 .game__message {
     min-height: 44px;
     margin: 16px 0 0;
-    color: #5d7169;
+    color: var(--color-muted);
     line-height: 1.45;
 }
 
 .game__message.is-error {
-    color: #9c3434;
+    color: var(--color-accent);
 }
 
 .game__message.is-success {
-    color: #267653;
+    color: var(--color-secondary);
 }
 
 .game__start,
@@ -266,15 +277,15 @@ a {
     min-height: 46px;
     border: 0;
     border-radius: 10px;
-    background: #267653;
-    color: #fff;
+    background: var(--color-primary);
+    color: var(--color-card);
     cursor: pointer;
     font-weight: 700;
 }
 
 .game__start:hover,
 .game__next:hover {
-    background: #1d6042;
+    background: var(--color-secondary);
 }
 
 .game__next[hidden] {
