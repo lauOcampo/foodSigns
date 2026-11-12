@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arma la frase | foodSigns</title>
+    <link rel="stylesheet" href="../../assets/css/styleArmaFrase.css">
+    <script src="../../assets/js/vocabularyData.js" defer></script>
+    <script src="../../assets/js/armaFrase.js" defer></script>
+</head>
+<body>
+    <main class="game">
+        <header class="game__header">
+            <a class="game__back" href="../menu.html">← Volver al menú</a>
+            <p class="game__eyebrow">foodSigns · Juego de vocabulario</p>
+            <h1>Arma la frase</h1>
+            <p>Mira las señas y organiza las palabras para formar una frase con sentido.</p>
+        </header>
+
+        <section class="round" aria-label="Ronda actual">
+            <div class="round__game-panel">
+                <div class="round__stats">
+                    <span>Ronda <strong id="round-number">0</strong></span>
+                    <span>Aciertos <strong id="score">0</strong></span>
+                </div>
+                <h2>Observa las señas</h2>
+                <p id="video-placeholder" class="round__placeholder">
+                    Inicia una partida para ver los videos de las señas.
+                </p>
+                <div id="sign-videos" class="sign-videos" aria-label="Videos de las señas"></div>
+                <h2 class="round__instruction">Ordena las palabras para crear una frase</h2>
+                <div id="answer-slots" class="answer-slots" role="group" aria-label="Frase que estás formando"></div>
+                <div id="word-bank" class="word-bank" aria-label="Palabras disponibles"></div>
+                <div class="round__actions">
+                    <button id="check-answer" class="game__check" type="button" disabled>Comprobar frase</button>
+                    <button id="clear-answer" class="game__clear" type="button" disabled>Borrar</button>
+                </div>
+                <p id="game-message" class="game__message" role="status" aria-live="polite">
+                    Inicia una partida para comenzar.
+                </p>
+                <button id="new-game" class="game__start" type="button">Iniciar partida</button>
+                <button id="next-round" class="game__next" type="button" hidden>Siguiente frase</button>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

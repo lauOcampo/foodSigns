@@ -1,0 +1,296 @@
+:root {
+    --color-background: #F3F6FA;
+    --color-card: #FFFFFF;
+    --color-primary: #24476B;
+    --color-secondary: #3478B9;
+    --color-accent: #E56B66;
+    --color-soft: #DCE5EF;
+    --color-text: #34445A;
+    --color-muted: #64758A;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    background: var(--color-background);
+    color: var(--color-text);
+    font-family: Arial, sans-serif;
+}
+
+button,
+a {
+    font: inherit;
+}
+
+.game {
+    width: min(100% - 40px, 920px);
+    margin: 0 auto;
+    padding: 36px 0 48px;
+}
+
+.game__header {
+    margin-bottom: 26px;
+    text-align: center;
+}
+
+.game__back {
+    display: block;
+    width: fit-content;
+    margin-bottom: 26px;
+    color: var(--color-secondary);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.game__back:hover,
+.game__back:focus-visible {
+    text-decoration: underline;
+}
+
+.game__eyebrow {
+    margin: 0 0 10px;
+    color: var(--color-secondary);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.game__header h1 {
+    margin: 0;
+    color: var(--color-primary);
+    font-size: clamp(1.8rem, 4vw, 2.7rem);
+}
+
+.game__header > p:last-child {
+    margin: 12px 0 0;
+    color: var(--color-muted);
+}
+
+.round__game-panel {
+    padding: 22px;
+    border: 1px solid var(--color-soft);
+    border-radius: 16px;
+    background: var(--color-card);
+}
+
+.round__stats {
+    display: flex;
+    justify-content: space-between;
+    color: var(--color-muted);
+    font-size: 0.95rem;
+}
+
+.round__stats strong {
+    color: var(--color-primary);
+}
+
+.round__game-panel h2 {
+    margin: 22px 0 12px;
+    color: var(--color-primary);
+    font-size: 1.15rem;
+}
+
+.round__placeholder {
+    margin: 0;
+    padding: 26px 16px;
+    border-radius: 12px;
+    background: var(--color-background);
+    color: var(--color-muted);
+    text-align: center;
+}
+
+.sign-videos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.sign-video {
+    overflow: hidden;
+    min-height: 200px;
+    border: 1px solid var(--color-soft);
+    border-radius: 12px;
+    background: var(--color-soft);
+}
+
+.sign-video video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 200px;
+    max-height: 360px;
+    object-fit: contain;
+}
+
+.round__game-panel .round__instruction {
+    margin-top: 24px;
+}
+
+.answer-slots,
+.word-bank {
+    display: flex;
+    min-height: 62px;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 12px;
+}
+
+.answer-slots {
+    margin-bottom: 12px;
+    background: var(--color-background);
+}
+
+.word-bank {
+    border: 1px dashed var(--color-secondary);
+}
+
+.word-slot,
+.word-tile {
+    display: grid;
+    min-width: 100px;
+    min-height: 44px;
+    place-items: center;
+    padding: 8px 14px;
+    border: 1px solid var(--color-soft);
+    border-radius: 9px;
+    background: var(--color-card);
+    color: var(--color-text);
+    font-weight: 700;
+}
+
+.word-slot {
+    border-style: dashed;
+    color: var(--color-muted);
+}
+
+.word-slot.is-filled {
+    cursor: pointer;
+}
+
+.word-slot.is-correct {
+    border-color: var(--color-secondary);
+    background: var(--color-soft);
+    color: var(--color-primary);
+}
+
+.word-slot.is-incorrect {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+.word-tile {
+    cursor: pointer;
+}
+
+.word-tile:hover:not(:disabled),
+.word-slot.is-filled:hover,
+.word-tile:focus-visible,
+.word-slot:focus-visible {
+    border-color: var(--color-secondary);
+    outline: none;
+}
+
+.word-tile:disabled {
+    opacity: 0.45;
+    cursor: default;
+}
+
+.round__actions {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+.game__check,
+.game__clear,
+.game__start,
+.game__next {
+    min-height: 44px;
+    padding: 9px 14px;
+    border: 0;
+    border-radius: 10px;
+    font-weight: 700;
+}
+
+.game__check,
+.game__start,
+.game__next {
+    background: var(--color-primary);
+    color: var(--color-card);
+    cursor: pointer;
+}
+
+.game__clear {
+    background: var(--color-soft);
+    color: var(--color-primary);
+    cursor: pointer;
+}
+
+.game__check:hover:not(:disabled),
+.game__start:hover,
+.game__next:hover {
+    background: var(--color-secondary);
+}
+
+.game__clear:hover:not(:disabled) {
+    background: var(--color-background);
+}
+
+.game__check:disabled,
+.game__clear:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.game__message {
+    min-height: 44px;
+    margin: 16px 0 0;
+    color: var(--color-muted);
+    line-height: 1.45;
+}
+
+.game__message.is-error {
+    color: var(--color-accent);
+}
+
+.game__message.is-success {
+    color: var(--color-secondary);
+}
+
+.game__start,
+.game__next {
+    width: 100%;
+    margin-top: 8px;
+}
+
+.game__next[hidden] {
+    display: none;
+}
+
+@media (max-width: 620px) {
+    .game {
+        width: min(100% - 32px, 520px);
+        padding-top: 24px;
+    }
+
+    .round__game-panel {
+        padding: 16px;
+    }
+
+    .sign-videos {
+        grid-template-columns: 1fr;
+    }
+
+    .sign-video,
+    .sign-video video {
+        min-height: 220px;
+    }
+}
