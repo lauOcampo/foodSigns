@@ -70,6 +70,49 @@ a {
     color: var(--color-muted);
 }
 
+.difficulty {
+    margin-bottom: 22px;
+}
+
+.difficulty h2 {
+    margin: 0 0 12px;
+    font-size: 1.15rem;
+}
+
+.difficulty__options {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.difficulty__option {
+    display: grid;
+    gap: 5px;
+    padding: 14px;
+    border: 1px solid var(--color-soft);
+    border-radius: 12px;
+    background: var(--color-card);
+    color: var(--color-text);
+    cursor: pointer;
+    text-align: left;
+}
+
+.difficulty__option span {
+    color: var(--color-muted);
+    font-size: 0.9rem;
+}
+
+.difficulty__option:hover,
+.difficulty__option:focus-visible,
+.difficulty__option.is-selected {
+    border-color: var(--color-secondary);
+    outline: none;
+}
+
+.difficulty__option.is-selected {
+    background: var(--color-soft);
+}
+
 .round {
     display: grid;
     grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
@@ -306,5 +349,15 @@ a {
     .round__video-panel,
     .round__video-panel video {
         min-height: 240px;
+    }
+
+    .difficulty__options {
+        grid-template-columns: 1fr;
+    }
+
+    .difficulty__option {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 }

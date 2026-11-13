@@ -9,8 +9,16 @@ const newGameButton = document.querySelector("#new-game");
 const nextRoundButton = document.querySelector("#next-round");
 const checkAnswerButton = document.querySelector("#check-answer");
 const clearAnswerButton = document.querySelector("#clear-answer");
+const difficultyButtons = [...document.querySelectorAll(".difficulty__option")];
 
 const vocabulary = window.foodSignsVocabulary;
+const extraLetterCounts = {
+    facil: 0,
+    medio: 3,
+    dificil: 6
+};
+const distractorLetters = [..."abcdefghijklmnñopqrstuvwxyz"];
+let level = "facil";
 let playableWords = [];
 let targetQueue = [];
 let currentWord = null;
@@ -139,7 +147,21 @@ function renderWord() {
         position += 1;
     });
 
-    shuffle(tiles).forEach(({ button }) => letterBank.append(button));
+    const extraTiles = Array.from({ length: extraLetterCounts[level] }, () => {
+        const character = distractorLetters[Math.floor(Math.random() * distractorLetters.length)];
+        const tile = {
+            character,
+            button: document.createElement("button")
+        };
+        tile.button.className = "letter-tile";
+        tile.button.type = "button";
+        tile.button.textContent = character.toLocaleUpperCase("es");
+        tile.button.setAttribute("aria-label", `Usar letra extra ${character}`);
+        tile.button.addEventListener("click", () => placeLetter(tile));
+        return tile;
+    });
+
+    shuffle([...tiles, ...extraTiles]).forEach(({ button }) => letterBank.append(button));
     clearAnswerButton.disabled = true;
     checkAnswerButton.disabled = true;
 }
@@ -154,9 +176,18 @@ function drawRound() {
     answered = false;
 
     video.src = currentWord.videoUrl;
+    video.autoplay = true;
+    video.loop = true;
+    video.muted = true;
     video.hidden = false;
     videoPlaceholder.hidden = true;
     video.load();
+    const roundWord = currentWord;
+    video.play().catch(() => {
+        if (currentWord === roundWord) {
+            setMessage("No se pudo iniciar el video automáticamente. Pulsa reproducir para verlo.", "error");
+        }
+    });
 
     renderWord();
     roundNumber.textContent = String(rounds);
@@ -223,6 +254,22 @@ function checkAnswer() {
 
     nextRoundButton.hidden = false;
 }
+
+difficultyButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        level = button.dataset.level;
+
+        difficultyButtons.forEach((option) => {
+            const isSelected = option === button;
+            option.classList.toggle("is-selected", isSelected);
+            option.setAttribute("aria-pressed", String(isSelected));
+        });
+
+        clearRound();
+        setMessage(`Nivel ${button.querySelector("strong").textContent} seleccionado. Inicia una partida nueva.`);
+        newGameButton.textContent = rounds > 0 ? "Nueva partida" : "Iniciar partida";
+    });
+});
 
 newGameButton.addEventListener("click", () => {
     playableWords = vocabulary.filter((item) => item.videoUrl);

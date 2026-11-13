@@ -17,9 +17,27 @@
             <p>Mira el video de la seña y organiza sus letras para descubrir la palabra.</p>
         </header>
 
+        <section class="difficulty" aria-labelledby="difficulty-title">
+            <h2 id="difficulty-title">Elige el nivel</h2>
+            <div class="difficulty__options">
+                <button class="difficulty__option is-selected" type="button" data-level="facil" aria-pressed="true">
+                    <strong>Fácil</strong>
+                    <span>Sin letras extra</span>
+                </button>
+                <button class="difficulty__option" type="button" data-level="medio" aria-pressed="false">
+                    <strong>Medio</strong>
+                    <span>3 letras extra</span>
+                </button>
+                <button class="difficulty__option" type="button" data-level="dificil" aria-pressed="false">
+                    <strong>Difícil</strong>
+                    <span>6 letras extra</span>
+                </button>
+            </div>
+        </section>
+
         <section class="round" aria-label="Ronda actual">
             <div class="round__video-panel">
-                <video id="sign-video" controls preload="metadata" playsinline aria-label="Video de la seña" hidden></video>
+                <video id="sign-video" controls autoplay loop preload="auto" playsinline aria-label="Video de la seña" hidden></video>
                 <p id="video-placeholder" class="round__placeholder">Inicia una partida para ver el video de la seña.</p>
             </div>
             <div class="round__game-panel">
