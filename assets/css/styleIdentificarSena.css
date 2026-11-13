@@ -287,6 +287,10 @@ a {
     display: none;
 }
 
+.game__next:not([hidden]) {
+    margin-top: 10px;
+}
+
 @media (max-width: 700px) {
     .game {
         width: min(100% - 32px, 520px);
