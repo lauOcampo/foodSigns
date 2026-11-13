@@ -29,6 +29,79 @@ const phraseDefinitions = [
         { text: "gaseosa", sign: "Gaseosa" },
         { text: "está" },
         { text: "fría", sign: "Frio" }
+    ],
+    [
+        { text: "La" },
+        { text: "gelatina", sign: "Gelatina" },
+        { text: "es" },
+        { text: "de" },
+        { text: "naranja", sign: "Naranja" }
+    ],
+    [
+        { text: "Tengo" },
+        { text: "hambre", sign: "Hambre" },
+        { text: "y" },
+        { text: "quiero" },
+        { text: "pan", sign: "Pan" }
+    ],
+    [
+        { text: "Quiero" },
+        { text: "una" },
+        { text: "hamburguesa", sign: "Hamburguesa" }
+    ],
+    [
+        { text: "El" },
+        { text: "helado", sign: "Helado" },
+        { text: "está" },
+        { text: "frío", sign: "Frio" }
+    ],
+    [
+        { text: "La" },
+        { text: "mazorca", sign: "Mazorca" },
+        { text: "está" },
+        { text: "lista" }
+    ],
+    [
+        { text: "Huelo", sign: "Oler" },
+        { text: "la" },
+        { text: "galleta", sign: "Galleta" }
+    ],
+    [
+        { text: "La" },
+        { text: "mermelada", sign: "Mermelada" },
+        { text: "es" },
+        { text: "de" },
+        { text: "naranja", sign: "Naranja" }
+    ],
+    [
+        { text: "Quiero" },
+        { text: "papa", sign: "Papa" },
+        { text: "con" },
+        { text: "frijol", sign: "Frijol" }
+    ],
+    [
+        { text: "La" },
+        { text: "panela", sign: "Panela" },
+        { text: "es" },
+        { text: "dulce" }
+    ],
+    [
+        { text: "Quiero" },
+        { text: "un" },
+        { text: "perro caliente", sign: "Perro caliente" }
+    ],
+    [
+        { text: "El" },
+        { text: "pan", sign: "Pan" },
+        { text: "está" },
+        { text: "caliente" }
+    ],
+    [
+        { text: "La" },
+        { text: "gaseosa", sign: "Gaseosa" },
+        { text: "es" },
+        { text: "de" },
+        { text: "naranja", sign: "Naranja" }
     ]
 ];
 
