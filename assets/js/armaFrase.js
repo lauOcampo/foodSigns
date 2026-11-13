@@ -9,8 +9,14 @@ const newGameButton = document.querySelector("#new-game");
 const nextRoundButton = document.querySelector("#next-round");
 const checkAnswerButton = document.querySelector("#check-answer");
 const clearAnswerButton = document.querySelector("#clear-answer");
+const difficultyButtons = [...document.querySelectorAll(".difficulty__option")];
 
 const vocabulary = window.foodSignsVocabulary;
+const extraWordCounts = {
+    facil: 0,
+    medio: 2,
+    dificil: 4
+};
 const phraseDefinitions = [
     [
         { text: "El" },
@@ -112,6 +118,7 @@ let slotButtons = [];
 let score = 0;
 let rounds = 0;
 let answered = false;
+let level = "facil";
 
 function shuffle(items) {
     const shuffled = [...items];
@@ -139,6 +146,18 @@ function getPhraseWords(definition) {
 
         return { text, videoUrl: vocabularyEntry?.videoUrl ?? "" };
     });
+}
+
+function getDistractorWords(count) {
+    const phraseWords = new Set(currentPhrase.map(({ text }) => text.toLocaleLowerCase("es")));
+    const candidateWords = new Map(
+        phraseDefinitions.flat().map(({ text }) => [text.toLocaleLowerCase("es"), text])
+    );
+
+    return shuffle([...candidateWords.values()])
+        .filter((text) => !phraseWords.has(text.toLocaleLowerCase("es")))
+        .slice(0, count)
+        .map((text) => ({ text, videoUrl: "" }));
 }
 
 function clearRound() {
@@ -222,7 +241,17 @@ function renderPhrase() {
         return word;
     });
 
-    shuffle(tiles).forEach(({ button }) => wordBank.append(button));
+    const distractors = getDistractorWords(extraWordCounts[level]).map((word) => {
+        const button = document.createElement("button");
+        button.className = "word-tile";
+        button.type = "button";
+        button.textContent = word.text;
+        button.addEventListener("click", () => placeWord(word));
+        word.button = button;
+        return word;
+    });
+
+    shuffle([...tiles, ...distractors]).forEach(({ button }) => wordBank.append(button));
 
     shuffle(currentPhrase.filter((word) => word.videoUrl)).forEach((word, index) => {
         const videoCard = document.createElement("div");
@@ -230,7 +259,10 @@ function renderPhrase() {
 
         const video = document.createElement("video");
         video.controls = true;
-        video.preload = "metadata";
+        video.autoplay = true;
+        video.loop = true;
+        video.muted = true;
+        video.preload = "auto";
         video.playsInline = true;
         video.setAttribute("aria-label", `Video de una seña, pista ${index + 1}`);
         video.src = word.videoUrl;
@@ -240,6 +272,11 @@ function renderPhrase() {
 
         videoCard.append(video);
         signVideos.append(videoCard);
+        video.play().catch(() => {
+            if (videoCard.isConnected) {
+                setMessage("No se pudo iniciar un video automáticamente. Pulsa reproducir para verlo.", "error");
+            }
+        });
     });
 
     videoPlaceholder.hidden = true;
@@ -319,6 +356,22 @@ function checkAnswer() {
 
     nextRoundButton.hidden = false;
 }
+
+difficultyButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        level = button.dataset.level;
+
+        difficultyButtons.forEach((option) => {
+            const isSelected = option === button;
+            option.classList.toggle("is-selected", isSelected);
+            option.setAttribute("aria-pressed", String(isSelected));
+        });
+
+        clearRound();
+        setMessage(`Nivel ${button.querySelector("strong").textContent} seleccionado. Inicia una partida nueva.`);
+        newGameButton.textContent = rounds > 0 ? "Nueva partida" : "Iniciar partida";
+    });
+});
 
 newGameButton.addEventListener("click", () => {
     const availableSigns = new Set(vocabulary.filter((item) => item.videoUrl).map((item) => item.word));
