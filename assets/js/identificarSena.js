@@ -49,6 +49,8 @@ function clearRound() {
     video.load();
     video.hidden = true;
     videoPlaceholder.hidden = false;
+    videoPlaceholder.classList.remove("round__placeholder--word");
+    videoPlaceholder.textContent = "La palabra aparecerá aquí.";
     roundNumber.textContent = "0";
     scoreDisplay.textContent = "0";
     nextRoundButton.hidden = true;
@@ -63,10 +65,13 @@ function drawRound() {
     rounds += 1;
     answered = false;
 
-    video.src = currentWord.videoUrl;
-    video.hidden = false;
-    videoPlaceholder.hidden = true;
+    video.pause();
+    video.removeAttribute("src");
     video.load();
+    video.hidden = true;
+    videoPlaceholder.hidden = false;
+    videoPlaceholder.textContent = currentWord.word;
+    videoPlaceholder.classList.add("round__placeholder--word");
 
     const numberOfOptions = Math.min(optionCounts[level], vocabulary.length);
     const distractors = shuffle(vocabulary.filter((item) => item.word !== currentWord.word))
@@ -75,9 +80,21 @@ function drawRound() {
 
     answerContainer.replaceChildren(...options.map((item) => {
         const button = document.createElement("button");
-        button.className = "answer-option";
+        button.className = "answer-option answer-video-option";
         button.type = "button";
-        button.textContent = item.word;
+        button.dataset.word = item.word;
+
+        const optionVideo = document.createElement("video");
+        optionVideo.src = item.videoUrl;
+        optionVideo.autoplay = true;
+        optionVideo.loop = true;
+        optionVideo.muted = true;
+        optionVideo.playsInline = true;
+        optionVideo.preload = "auto";
+        optionVideo.controls = false;
+        optionVideo.setAttribute("aria-label", `Video de la palabra ${item.word}`);
+
+        button.append(optionVideo);
         button.addEventListener("click", () => selectAnswer(button, item));
         return button;
     }));
@@ -86,7 +103,7 @@ function drawRound() {
     scoreDisplay.textContent = String(score);
     newGameButton.textContent = "Nueva partida";
     nextRoundButton.hidden = true;
-    setMessage("Selecciona la palabra que corresponde al video.");
+    setMessage("Selecciona el video que corresponde a la palabra.");
 }
 
 function selectAnswer(button, selectedWord) {
@@ -100,7 +117,7 @@ function selectAnswer(button, selectedWord) {
     answerContainer.querySelectorAll("button").forEach((option) => {
         option.disabled = true;
 
-        if (option.textContent === currentWord.word) {
+        if (option.dataset.word === currentWord.word) {
             option.classList.add("is-correct");
         }
     });
@@ -111,7 +128,15 @@ function selectAnswer(button, selectedWord) {
         setMessage("¡Correcto! Muy bien.", "success");
     } else {
         button.classList.add("is-incorrect");
-        setMessage(`La respuesta era: ${currentWord.word}.`, "error");
+        video.src = currentWord.videoUrl;
+        video.autoplay = true;
+        video.loop = true;
+        video.muted = true;
+        video.playsInline = true;
+        video.hidden = false;
+        videoPlaceholder.hidden = true;
+        video.load();
+        setMessage("Ese no era. Aquí está el video correcto.", "error");
     }
 
     scoreDisplay.textContent = String(score);

@@ -13,8 +13,8 @@
         <header class="game__header">
             <a class="game__back" href="../menu.html">← Volver al menú</a>
             <p class="game__eyebrow">foodSigns · Juego de vocabulario</p>
-            <h1>¿Qué palabra corresponde a esta seña?</h1>
-            <p>Mira el video y selecciona la palabra correcta.</p>
+            <h1>¿Qué video corresponde a esta palabra?</h1>
+            <p>Lee la palabra y selecciona el video correcto.</p>
         </header>
 
         <section class="difficulty" aria-labelledby="difficulty-title">
@@ -38,14 +38,14 @@
         <section class="round" aria-label="Ronda actual">
             <div class="round__video-panel">
                 <video id="sign-video" controls preload="metadata" playsinline aria-label="Video de la seña"></video>
-                <p id="video-placeholder" class="round__placeholder">El video de la seña aparecerá aquí.</p>
+                <p id="video-placeholder" class="round__placeholder">La palabra aparecerá aquí.</p>
             </div>
             <div class="round__answers">
                 <div class="round__stats">
                     <span>Ronda <strong id="round-number">0</strong></span>
                     <span>Aciertos <strong id="score">0</strong></span>
                 </div>
-                <h2>¿Qué palabra es?</h2>
+                <h2>¿Qué video es?</h2>
                 <div id="answer-options" class="answer-options"></div>
                 <p id="game-message" class="game__message" role="status" aria-live="polite">
                     Elige un nivel y comienza una partida.
